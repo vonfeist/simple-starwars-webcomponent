@@ -1,0 +1,13 @@
+<template id="star-wars-template">
+    <link rel="stylesheet" href="/components/StarWarsApp/StarWarsApp.css">
+    <div class="movie-filter__container">
+        <filter-button filter="best" name="Best Movies"></filter-button>
+        <filter-button filter="old" name="Old Movies"></filter-button>
+        <filter-button filter="All" name="All Movies"></filter-button>
+    </div>
+    <movie-list id="movie-list"></movie-list>
+    <movie-list-detail id="movie-list-detail"></movie-list-detail>
+</template>
+<link rel="import" href="/components/MovieList/MovieList.html">
+<link rel="import" href="/components/MovieListDetail/MovieListDetail.html">
+<script src="/components/StarWarsApp/StarWarsApp.js"></script>

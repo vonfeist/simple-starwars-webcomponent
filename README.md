@@ -1,2 +1,0 @@
-# test-vizibl
-Webcomponent Setup

@@ -1,0 +1,22 @@
+.movie-list__container {
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid grey;
+    font-family: Helvetica;
+    margin: 3px;
+}
+.movie-list__list {
+    list-style: none
+}
+
+.movie-list__items > li {
+    font-size: 16px;
+    padding: 10px;
+    color: #000000;
+    text-decoration: none;
+}
+
+.movie-list__container ul {
+    list-style: none;
+    display: flex;
+}

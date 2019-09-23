@@ -1,0 +1,9 @@
+#star-wars-template {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+}
+
+#movie-list {
+   padding-top: 20px;
+}
