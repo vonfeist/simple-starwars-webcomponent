@@ -6,12 +6,8 @@ const currentDocument = document.currentScript.ownerDocument;
         const HTMLTemplate = new DOMParser().parseFromString(textTemplate, 'text/html')
             .querySelector('template');
 
-        // Private Methods will go here:
-        // ...
-
         class MovieList extends HTMLElement {
             constructor() {
-                // If you define a constructor, always call super() first as it is required by the CE spec.
                 super();
             }
 

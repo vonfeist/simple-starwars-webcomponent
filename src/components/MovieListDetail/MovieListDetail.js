@@ -3,10 +3,9 @@
 
     class MovieListDetail extends HTMLElement {
         constructor() {
-            // If you define a constructor, always call super() first as it is required by the CE spec.
             super();
 
-            // Setup a click listener on <user-card>
+            // Setup a click listener to show/hide extra info
             this.addEventListener('click', e => {
                 this.toggleCard();
             });
@@ -20,18 +19,20 @@
             shadowRoot.appendChild(instance);
         }
 
-        // Creating an API function so that other components can use this to populate this component
+        // calls the rendering function and passes API data
         updateMovieDetails(movie) {
             this.render(movie);
         }
 
-        // Function to populate the card(Can be made private)
+        // adds the information to the card
         render(movie) {
             this.shadowRoot.querySelector('.card__title').innerHTML = movie.title;
             this.shadowRoot.querySelector('.card__release-date').innerHTML = movie.release_date;
             this.shadowRoot.querySelector('.card__opening').innerHTML = movie.opening_crawl;
+            this.shadowRoot.querySelector('.card__more-info').innerHTML = movie.title;
         }
 
+        // shows more information
         toggleCard() {
             let elem = this.shadowRoot.querySelector('.card__hidden-content');
             let btn = this.shadowRoot.querySelector('.card__details-btn');

@@ -1,0 +1,18 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "description": "Webcomponents Application to show Star Wars Movies",
+  "main": "index.js",
+  "scripts": {
+    "start": "static-server"
+  },
+  "keywords": [
+    "web components",
+    "star wars"
+  ],
+  "author": "Pia Fornfeist",
+  "license": "ISC",
+  "dependencies": {
+    "static-server": "^2.2.1"
+  }
+}

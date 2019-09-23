@@ -17,13 +17,11 @@
         }
     }
 
-    // Private functions here
-
     customElements.define('star-wars-app', StarWarsApp);
 })();
 
+// Calls API to get movies
 async function _fetchAndPopulateData(self) {
-    console.log(self);
     let movieList = self.shadowRoot.querySelector('#movie-list');
      fetch(`https://swapi.co/api/films/`)
         .then((response) => response.json())
@@ -44,7 +42,6 @@ async function _fetchAndPopulateData(self) {
 function _attachEventListener(self) {
     let movieDetail = self.shadowRoot.querySelector('#movie-list-detail');
     self.starWarsMovies.forEach(movie => {
-        // Update the personDetail component to reflect the click
         movieDetail.updateMovieDetails(movie);
 
     });
@@ -54,7 +51,7 @@ function _attachEventListener(self) {
         // updates the detail info about the movie
         self.starWarsMovies.forEach(movie => {
             if (movie.episode_id === e.detail.movieId) {
-                // Update the personDetail component to reflect the click
+                // Update the movieDetail component to reflect the click
                 movieDetail.updateMovieDetails(movie);
             }
         })
