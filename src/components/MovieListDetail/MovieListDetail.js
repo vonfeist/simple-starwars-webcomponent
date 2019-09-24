@@ -1,5 +1,8 @@
-(function () {
-    const currentDocument = document.currentScript.ownerDocument;
+(async () => {
+    const res = await fetch('/components/MovieListDetail/MovieListDetail.html');
+    const textTemplate = await res.text();
+    const HTMLTemplate = new DOMParser().parseFromString(textTemplate, 'text/html')
+        .querySelector('template');
 
     class MovieListDetail extends HTMLElement {
         constructor() {
@@ -14,8 +17,7 @@
         // Called when element is inserted in DOM
         connectedCallback() {
             const shadowRoot = this.attachShadow({mode: 'open'});
-            const template = currentDocument.querySelector('#movie-list-detail');
-            const instance = template.content.cloneNode(true);
+            const instance = HTMLTemplate.content.cloneNode(true);
             shadowRoot.appendChild(instance);
         }
 
@@ -26,10 +28,14 @@
 
         // adds the information to the card
         render(movie) {
-            this.shadowRoot.querySelector('.card__title').innerHTML = movie.title;
-            this.shadowRoot.querySelector('.card__release-date').innerHTML = movie.release_date;
-            this.shadowRoot.querySelector('.card__opening').innerHTML = movie.opening_crawl;
-            this.shadowRoot.querySelector('.card__more-info').innerHTML = movie.title;
+            if (movie) {
+                this.shadowRoot.querySelector('.card__user-card-container').removeAttribute('hidden');
+                this.shadowRoot.querySelector('.card__title').innerHTML = movie.title;
+                this.shadowRoot.querySelector('.card__release-date').innerHTML = '(' + movie.release_date + ')';
+                this.shadowRoot.querySelector('.card__opening').innerHTML = movie.opening_crawl;
+                this.shadowRoot.querySelector('.card__more-info__director').innerHTML = movie.director;
+                this.shadowRoot.querySelector('.card__more-info__episode').innerHTML =  movie.episode_id;
+            }
         }
 
         // shows more information

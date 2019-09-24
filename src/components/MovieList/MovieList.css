@@ -1,10 +1,9 @@
 .movie-list__container {
     text-align: center;
-    border-radius: 5px;
-    border: 1px solid grey;
     font-family: Helvetica;
     margin: 3px;
 }
+
 .movie-list__list {
     list-style: none
 }
@@ -14,9 +13,15 @@
     padding: 10px;
     color: #000000;
     text-decoration: none;
+    cursor: pointer;
+}
+
+.movie-list__item:hover {
+    background: grey;
 }
 
 .movie-list__container ul {
     list-style: none;
     display: flex;
+    justify-content: center;
 }

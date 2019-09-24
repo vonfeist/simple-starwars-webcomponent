@@ -1,5 +1,8 @@
-(function () {
-    const currentDocument = document.currentScript.ownerDocument;
+(async () => {
+    const res = await fetch('/components/StarWarsApp/StarWarsApp.html');
+    const textTemplate = await res.text();
+    const HTMLTemplate = new DOMParser().parseFromString(textTemplate, 'text/html')
+        .querySelector('template');
 
     class StarWarsApp extends HTMLElement {
         constructor() {
@@ -9,8 +12,7 @@
 
         async connectedCallback() {
             const shadowRoot = this.attachShadow({mode: 'open'});
-            const template = currentDocument.querySelector('#star-wars-template');
-            const instance = template.content.cloneNode(true);
+            const instance = HTMLTemplate.content.cloneNode(true);
             shadowRoot.appendChild(instance);
 
             await _fetchAndPopulateData(this);
@@ -23,14 +25,15 @@
 // Calls API to get movies
 async function _fetchAndPopulateData(self) {
     let movieList = self.shadowRoot.querySelector('#movie-list');
-     fetch(`https://swapi.co/api/films/`)
+    fetch(`https://swapi.co/api/films/`)
         .then((response) => response.json())
         .then((responseText) => {
-            const list = responseText.results;
+            // sort results
+            const list = responseText.results.sort((a,b ) => a.episode_id - b.episode_id);
             // set value of variable
             self.starWarsMovies = list;
             // Set the Attribute of web component
-             movieList.list = list;
+            movieList.list = list;
 
             _attachEventListener(self);
         })
@@ -41,10 +44,9 @@ async function _fetchAndPopulateData(self) {
 
 function _attachEventListener(self) {
     let movieDetail = self.shadowRoot.querySelector('#movie-list-detail');
-    self.starWarsMovies.forEach(movie => {
-        movieDetail.updateMovieDetails(movie);
 
-    });
+    // show first rendered movie
+    movieDetail.updateMovieDetails(self.starWarsMovies[0]);
     // Watch for the event on the shadow DOM
     self.shadowRoot.addEventListener('MovieClicked', (e) => {
         // e contains the movieId

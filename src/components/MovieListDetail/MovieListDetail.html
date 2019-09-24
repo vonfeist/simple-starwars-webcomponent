@@ -1,15 +1,19 @@
 <template id="movie-list-detail">
     <link rel="stylesheet" href="/components/MovieListDetail/MovieListDetail.css">
-    <div class="card__user-card-container">
+    <div class="card__user-card-container" hidden>
         <h2 class="card__name">
-            <span class="card__title"></span> (
-            <span class="card__release-date"></span>)
+            <span class="card__title"></span>
+            <span class="card__release-date"></span>
         </h2>
         <a class="card__opening"></a>
-        <div class="card__hidden-content">
-            <div class="card__more-info"></div>
-        </div>
         <button class="card__details-btn">More Details</button>
+        <div class="card__hidden-content">
+            <div class="card__more-info">
+                Director: <span class="card__more-info__director"></span>
+                </br>
+                Episode: <span class="card__more-info__episode"></span>
+            </div>
+        </div>
     </div>
 </template>
 <link rel="import" href="/components/MovieListDetail/MovieListDetail.html">
