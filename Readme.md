@@ -13,9 +13,9 @@ This application is build with 3 web compontens:
 This app is only using a simple static server, therefore
 navigate into the folder `src` and start the server with
 
-`static-server`
+`npm run start`
 
-Note: Please install the package globally if you don't have it running:
+Note: If there will be an issues, please install the package globally if you don't have it running:
 ` npm install -g static-server`
 
 Have fun browsing this greatly styled Star Wars Movie List!
